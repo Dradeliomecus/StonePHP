@@ -44,6 +44,8 @@ final class Application{
 		$this->controller = Controller::load($parsedURL['controller']);
 
 		$this->controller->call($parsedURL['action'], $parsedURL['params']);
+
+		$this->controller->renderView();
 	}
 
 }

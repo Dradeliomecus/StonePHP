@@ -13,8 +13,10 @@ abstract class Model{
 
 	final public function all(){
 		return array(
-			'title'		=> 'Un titre bidon',
-			'content'	=> 'Un contenu qui me dit que je dois faire ma classe Stone\Database\Model'
+			array(
+				'name'		=> 'Un titre bidon',
+				'content'	=> 'Un contenu qui me dit que je dois faire ma classe Stone\Database\Model'
+			)
 		);
 	}
 

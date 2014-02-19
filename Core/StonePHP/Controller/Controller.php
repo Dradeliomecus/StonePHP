@@ -44,6 +44,15 @@ abstract class Controller{
 	}
 
 	/**
+	 * Renders the View (only if it has not been rendered before)
+	 * 
+	 * @return void
+	 */
+	final public function renderView(){
+		$this->View->make();
+	}
+
+	/**
 	 * Loads every models in Controller::$models
 	 * 
 	 * @return void

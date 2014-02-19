@@ -25,7 +25,14 @@ final class View{
 	 * 
 	 * @var array
 	 */
-	private $vars;
+	private $vars = array();
+
+	/**
+	 * Has the View been rendered
+	 * 
+	 * @var boolean
+	 */
+	private $rendered;
 
 	/**
 	 * Creates a new View instance
@@ -35,6 +42,8 @@ final class View{
 	 * @return void
 	 */
 	final public function __construct($filename = '', $layout = ''){
+		$this->rendered = false;
+
 		if($filename != ''){
 			$this->setFilename($filename);
 		}
@@ -48,7 +57,23 @@ final class View{
 	 * Sends a variable to the view
 	 */
 	final public function send($var1, $var2){
+		if(is_string($var1)){
+			$this->vars[$var1] = $var2;
+		}
+	}
 
+	/**
+	 * Makes the view to render it
+	 * 
+	 * @return void
+	 */
+	final public function make(){
+		if($this->rendered) return;
+
+		$file = VIEW.DS.$this->filename.'.php';
+		$layout = VIEW.DS.'layout'.DS.$this->layout.'.php';
+
+		new ViewRenderer($this->vars, $file, $layout);
 	}
 
 	/**

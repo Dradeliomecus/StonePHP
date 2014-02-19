@@ -26,6 +26,7 @@ require_once 'Database'.DS.'Model.php';
 // CONTROLLER
 require_once 'Controller'.DS.'Controller.php';
 require_once 'Controller'.DS.'View.php';
+require_once 'Controller'.DS.'ViewRenderer.php';
 
 // CONFIGURATION
 require_once CONFIG.DS.'Config.php';
