@@ -1,0 +1,17 @@
+{
+    "name": "stonephp/stonephp",
+    "description": "StonePHP framework",
+    "authors": [
+        {
+            "name": "Aurelien Wyngaard",
+            "email": "aurelien.wyngaard@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "filp/whoops": "1"
+    },
+    "config": {
+        "vendor-dir": "Core/lib"
+    }
+}
