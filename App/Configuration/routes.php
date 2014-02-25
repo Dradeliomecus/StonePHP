@@ -7,11 +7,11 @@
  * to tell the framework how to reponse to an given url
  */
 
-//use Stone\Routing\Route;
+use Stone\Routing\Route;
 
 Route::get('/', 'BlogController.index');
 
 Route::get('/view/&slug/?id', 'BlogController.view', array(
-	'slug'	=> '(a-zA-Z0-0\-)+',
-	'id'	=> '(0-9)+'
+	'slug'	=> '[a-zA-Z0-9\-]+',
+	'id'	=> '[0-9]+'
 ));

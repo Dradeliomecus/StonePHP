@@ -7,18 +7,26 @@ final class Router{
 	/**
 	 * Parses an URL
 	 * 
-	 * @param Stone\Routing\Request $request
+	 * @param string $requestURL
 	 * @return array $parsedURL
 	 */
-	final public static function parse(Request $request){
+	final public static function parse($requestURL){
 		$parsedURL = array(
 			'controller'=> '',
 			'action'	=> 'index',
 			'params'	=> []
 		);
-		$url = trim($request->getURL(), '/');
+		$url = trim($requestURL, '/');
 
 		$explode = explode('/', $url);
+
+		$routes = Route::getRoutes();
+
+		foreach($routes as $route => $params){
+			if(preg_match('/^'.$route.'$/', $requestURL)){
+				return $params;
+			}
+		}
 
 		if(isset($explode[0])){
 			$parsedURL['controller'] = $explode[0];

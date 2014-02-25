@@ -11,13 +11,6 @@ use Stone\Routing\Router;
 final class Application{
 
 	/**
-	 * User's request (url)
-	 * 
-	 * @var Stone\Routing\Request
-	 */
-	private $request;
-
-	/**
 	 * Controller used
 	 * 
 	 * @var Stone\Controller
@@ -30,7 +23,9 @@ final class Application{
 	 * @return void
 	 */
 	final public function __construct(){
-		$this->request = new Request();
+		Request::init();
+
+		require_once CONFIG.DS.'routes.php';
 	}
 
 	/**
@@ -39,7 +34,7 @@ final class Application{
 	 * @return void
 	 */
 	final public function start(){
-		$parsedURL = Router::parse($this->request);
+		$parsedURL = Router::parse(Request::getURL());
 
 		$this->controller = Controller::load($parsedURL['controller']);
 
